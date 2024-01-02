@@ -5,19 +5,20 @@ import java.util.Random;
 public class JavaGuessingGame implements ActionListener {
 
   JFrame frame;
-  JTextField textField,notice;
+  JTextField textField,notice,score;
   JButton[] numbers = new JButton[10];
   JButton check,del,clr;
   JPanel panel;
   static int r,x;
-  int i=0,f=0;
+  int i=0,f=0,c=0;
+
   public JavaGuessingGame()
   {
 
     Random rand = new Random();
     r=rand.nextInt(100)+1;
 
-    frame = new JFrame("Calculator");
+    frame = new JFrame("Guessing Game");
     frame.setSize(390,550);
     frame.setLayout(null);
 
@@ -30,8 +31,12 @@ public class JavaGuessingGame implements ActionListener {
     textField.setEditable(false);
 
     notice = new JTextField("                         Start guessing!");
-    notice.setBounds(40,80,310,40);
+    notice.setBounds(40,80,260,40);
     notice.setEditable(false);
+
+    score = new JTextField("Score");
+    score.setBounds(310,80,40,40);
+    score.setEditable(false);
 
     check = new JButton("CHECK");
     check.addActionListener(this);
@@ -60,6 +65,7 @@ public class JavaGuessingGame implements ActionListener {
     panel.add(clr);
     
     frame.add(check);
+    frame.add(score);
     check.setBounds(40,450,310,70);
     frame.add(panel);
     frame.add(textField);
@@ -87,6 +93,8 @@ Random rand = new Random();
           notice.setText("                             Guess Again");
           r=rand.nextInt(100)+1;
           f=0;
+          c=0;
+          score.setText("     "+c);
         }
           
       }
@@ -105,22 +113,24 @@ Random rand = new Random();
 
     if(e.getSource()==check)
     {
+      c++;
+      score.setText("    "+c);
       String s = textField.getText();
       textField.setText("");
       x = Integer.parseInt(s);
       if(x==r)
       {
-        notice.setText("                  *******___Correct___*******");
-        textField.setText("      ***Congratulations You Won The Game***");
+        notice.setText("        *******___Correct___*******");
+        textField.setText("       ***Congratulations You Won The Game***");
         f=1;
       }
       else if(x>r)
       {
-        notice.setText("               *****Your guess is High*****");
+        notice.setText("       *****Your guess is High*****");
       }
       else
       {
-        notice.setText("               *****Your guess is Low****");
+        notice.setText("       *****Your guess is Low****");
       }
       }
     }
