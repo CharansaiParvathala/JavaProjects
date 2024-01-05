@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.awt.Color;
 import java.util.Random;
 public class JavaGuessingGame implements ActionListener {
 
@@ -10,8 +11,7 @@ public class JavaGuessingGame implements ActionListener {
   JButton check,del,clr;
   JPanel panel;
   static int r,x;
-  int i=0,f=0,c=0;
-
+  int i=0,f=0,c=101;
   public JavaGuessingGame()
   {
 
@@ -49,6 +49,7 @@ public class JavaGuessingGame implements ActionListener {
       {
         numbers[i] = new JButton(Integer.toString(i));
         numbers[i].addActionListener(this);
+        numbers[i].setBackground(new Color(204,204,204));
       }
 
     panel.add(numbers[1]);
@@ -71,6 +72,15 @@ public class JavaGuessingGame implements ActionListener {
     frame.add(textField);
     frame.add(notice);
     frame.setVisible(true);
+    frame.setResizable(false);
+    frame.getContentPane().setBackground(new Color(255,255,204));
+    panel.setBackground(new Color(255,255,204));
+    score.setBackground(new Color(255,255,0));
+    textField.setBackground(new Color(51,204,255));
+    del.setBackground(new Color(204,204,204));
+    clr.setBackground(new Color(204,204,204));
+    check.setBackground(new Color(204,204,204));
+    notice.setBackground(new Color(51,204,255));
   }
 
   @Override
@@ -93,8 +103,9 @@ Random rand = new Random();
           notice.setText("                             Guess Again");
           r=rand.nextInt(100)+1;
           f=0;
-          c=0;
-          score.setText("     "+c);
+          c=101;
+          score.setText("   "+(c-1));
+          notice.setBackground(new Color(51,204,255));
         }
           
       }
@@ -113,24 +124,34 @@ Random rand = new Random();
 
     if(e.getSource()==check)
     {
-      c++;
-      score.setText("    "+c);
       String s = textField.getText();
+      if(s.equals(""))
+      {
+    JOptionPane.showMessageDialog(panel,"Enter A Number");
+      }
+      else
+      {
+      c--;
+      score.setText("  "+c);
       textField.setText("");
       x = Integer.parseInt(s);
       if(x==r)
       {
         notice.setText("        *******___Correct___*******");
         textField.setText("       ***Congratulations You Won The Game***");
+        notice.setBackground(Color.GREEN);
         f=1;
       }
       else if(x>r)
       {
         notice.setText("       *****Your guess is High*****");
+        notice.setBackground(new Color(255,102,102));
       }
       else
       {
         notice.setText("       *****Your guess is Low****");
+        notice.setBackground(new Color(255,102,102));
+      }
       }
       }
     }
