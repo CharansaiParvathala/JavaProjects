@@ -1,3 +1,7 @@
+/*Guess Number from 1 - 100
+ Your Score = 100 - Number of attempts*/
+
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
