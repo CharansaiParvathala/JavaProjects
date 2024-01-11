@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class Main implements ActionListener {
+public class JavaCalculator implements ActionListener {
 
   JFrame frame;
   JTextField textField;
@@ -14,7 +14,7 @@ public class Main implements ActionListener {
   char op;
   int i=0;
   boolean f=false;
-  public Main()
+  public JavaCalculator()
   {
     
     frame = new JFrame("Calculator");
@@ -196,5 +196,5 @@ textField.setText(s.substring(0,s.length()-1));
  }
   
   public static void main(String[] args)
-  {  Main obj = new Main(); }
+  {  JavaCalculator obj = new JavaCalculator(); }
 }
