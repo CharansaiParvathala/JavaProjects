@@ -1,6 +1,11 @@
 /*Guess Number from 1 - 100
  Your Score = 100 - Number of attempts*/
 
+/*
+Thank you for visiting! If you have any suggestions, please email me at:
+
+Mail: charansaiparvathala@gmail.com
+*/
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -159,6 +164,12 @@ Random rand = new Random();
       }
       }
     }
+ /*
+       DEVELOPED BY
+  
+   CHARANSAI PARVATHALA 
+
+ */
 
   public static void main(String[] args)
   {
